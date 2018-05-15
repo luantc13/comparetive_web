@@ -66,7 +66,7 @@
                                     <td><?php echo $i ?></td>
                                     <td><?php echo $item->name ?></td>
                                     <td><?php echo number_format($item->price, 0, ',', '.') ?> VNĐ</td>
-                                    <td><img src="upload/provider/<?php echo $item->provider_image ?>"></td>
+                                    <td><img src="upload/provider/<?php echo $item->provider_image ?>" width="250px"></td>
                                     <td><a href="<?php echo $item->link ?>"><?php echo $item->link ?></a></td>
                                     <td>
                                         <a class="btn btn-warning" href="admin.php?c=product&a=geteditcomparetivelink&idcomparetivelink=<?php echo $item->id ?>&idproduct=<?php echo $product->id ?>"><i class="fa fa-edit"></i> Chỉnh sửa</a>

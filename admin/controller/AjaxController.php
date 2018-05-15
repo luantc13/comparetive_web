@@ -4,7 +4,7 @@ class AjaxController extends BaseController
 {
     public function changeCategoryAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('category');
         $this->model->load('productRange');
 

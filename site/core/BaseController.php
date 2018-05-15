@@ -6,15 +6,17 @@ class BaseController extends Controller
     {
         parent::__construct();
     }
-     
-    public function load_header()
-    {
-        // Load nội dung footer
-    }
-     
-    public function load_footer()
+
+    public function load_header($data = [])
     {
         // Load nội dung header
+        $this->view->load('layout/header', $data);
+    }
+     
+    public function load_footer($data = [])
+    {
+        // Load nội dung header
+        $this->view->load('layout/footer', $data);
     }
      
     // Hàm hủy này có nhiệm vụ show nội dung của view, lúc này các controller

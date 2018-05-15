@@ -6,11 +6,11 @@ class ProductController extends BaseController
 {
     public function indexAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
 
         $list = $this->model->product->all();
-        
+        // var_dump($list); die();
         // load view
         $data = [
             'page' => 'product',
@@ -28,7 +28,7 @@ class ProductController extends BaseController
      
     public function changeActiveAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
 
         // get value of column active
@@ -50,7 +50,7 @@ class ProductController extends BaseController
 
     public function getAddAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('category');
         $this->model->load('productRange');
         $this->model->load('provider');
@@ -83,7 +83,7 @@ class ProductController extends BaseController
 
     public function postAddAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
         $this->model->load('imageProduct');
         $this->model->load('comparetiveLink');
@@ -223,7 +223,7 @@ class ProductController extends BaseController
 
     public function getEditImageAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
         $this->model->load('imageProduct');
 
@@ -248,7 +248,7 @@ class ProductController extends BaseController
 
     public function postEditImageAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
         $this->model->load('imageProduct');
         $this->helper->load('string');
@@ -304,7 +304,7 @@ class ProductController extends BaseController
 
     public function deleteImageAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('imageProduct');
 
         $idProduct = $_GET['idproduct'];
@@ -327,7 +327,7 @@ class ProductController extends BaseController
 
     public function listComparetiveLinkAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('comparetiveLink');
         $this->model->load('product');
 
@@ -352,7 +352,7 @@ class ProductController extends BaseController
 
     public function getAddComparetiveLinkAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
         $this->model->load('provider');
         $this->model->load('comparetiveLink');
@@ -378,7 +378,7 @@ class ProductController extends BaseController
 
     public function postAddComparetiveLinkAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
         $this->model->load('comparetiveLink');
         $this->model->load('provider');
@@ -448,7 +448,7 @@ class ProductController extends BaseController
 
     public function getEditComparetiveLinkAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
         $this->model->load('provider');
         $this->model->load('comparetiveLink');
@@ -477,7 +477,7 @@ class ProductController extends BaseController
 
     public function postEditComparetiveLinkAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
         $this->model->load('comparetiveLink');
         $this->model->load('provider');
@@ -549,7 +549,7 @@ class ProductController extends BaseController
 
     public function deleteComparetiveLinkAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('comparetiveLink');
 
         $idProduct = $_GET['idproduct'];
@@ -569,7 +569,7 @@ class ProductController extends BaseController
 
     public function getEditAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
         $this->model->load('productRange');
         $this->model->load('category');
@@ -606,7 +606,7 @@ class ProductController extends BaseController
 
     public function postEditAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
         $this->helper->load('string');
 
@@ -659,7 +659,7 @@ class ProductController extends BaseController
 
     public function deleteAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('product');
         $this->model->load('imageProduct');
         $this->model->load('comparetiveLink');

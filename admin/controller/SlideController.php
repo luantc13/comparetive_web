@@ -4,7 +4,7 @@ class SlideController extends BaseController
 {
     public function indexAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('slide');
 
         $list = $this->model->slide->all();
@@ -26,7 +26,7 @@ class SlideController extends BaseController
      
     public function changeActiveAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('slide');
 
         // get value of column active
@@ -62,7 +62,7 @@ class SlideController extends BaseController
 
     public function postAddAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('slide');
         $this->helper->load('string');
 
@@ -127,7 +127,7 @@ class SlideController extends BaseController
 
     public function getEditAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('slide');
 
         $id = $_GET['id'];
@@ -149,7 +149,7 @@ class SlideController extends BaseController
 
     public function postEditAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('slide');
         $this->helper->load('string');
 
@@ -227,7 +227,7 @@ class SlideController extends BaseController
 
     public function deleteAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('slide');
 
         $id = $_GET['id'];

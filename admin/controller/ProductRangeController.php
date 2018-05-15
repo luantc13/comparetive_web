@@ -4,7 +4,7 @@ class ProductRangeController extends BaseController
 {
     public function indexAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('productRange');
 
         $list = $this->model->productRange->all();
@@ -26,7 +26,7 @@ class ProductRangeController extends BaseController
     
     public function changeActiveAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('productRange');
 
         // get value of column active
@@ -48,7 +48,7 @@ class ProductRangeController extends BaseController
 
     public function getAddAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('category');
         $category = $this->model->category->all();
 
@@ -69,7 +69,7 @@ class ProductRangeController extends BaseController
 
     public function postAddAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('productRange');
         $this->helper->load('string');
 
@@ -115,7 +115,7 @@ class ProductRangeController extends BaseController
 
     public function getEditAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('productRange');
         $this->model->load('category');
 
@@ -140,7 +140,7 @@ class ProductRangeController extends BaseController
 
     public function postEditAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('productRange');
         $this->helper->load('string');
 
@@ -192,7 +192,7 @@ class ProductRangeController extends BaseController
 
     public function deleteAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('productRange');
         $this->model->load('product');
         $this->model->load('imageProduct');

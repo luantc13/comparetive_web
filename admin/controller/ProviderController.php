@@ -4,7 +4,7 @@ class ProviderController extends BaseController
 {
     public function indexAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('provider');
 
         $list = $this->model->provider->all();
@@ -26,7 +26,7 @@ class ProviderController extends BaseController
      
     public function changeActiveAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('provider');
 
         // get value of column active
@@ -62,7 +62,7 @@ class ProviderController extends BaseController
 
     public function postAddAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('provider');
         $this->helper->load('string');
 
@@ -155,7 +155,7 @@ class ProviderController extends BaseController
 
     public function getEditAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('provider');
 
         $id = $_GET['id'];
@@ -177,7 +177,7 @@ class ProviderController extends BaseController
 
     public function postEditAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('provider');
         $this->helper->load('string');
 
@@ -272,7 +272,7 @@ class ProviderController extends BaseController
 
     public function deleteAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('provider');
         $this->model->load('comparetiveLink');
 

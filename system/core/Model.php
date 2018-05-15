@@ -16,8 +16,6 @@ class Database
     
     //Function execute the query 
     public function execute($options=array()) {
-        // var_dump($options);
-        // die();
         $this->_cursor = $this->_dbh->prepare($this->_sql);
         if($options) {  //If have $options then system will be tranmission parameters
             for($i=0;$i<count($options);$i++) {

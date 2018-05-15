@@ -66,60 +66,26 @@
                                     <td>
                                         <?php
                                         $image = explode(",", $item->image);
-                                        $i = 0;
+                                        $j = 0;
                                         foreach($image as $img) {
-                                            list($id, $name) = explode("@", $img);
+                                            list($id, $name) = explode("||", $img);
                                             echo '<img src="upload/product/'.$name.'" width="150px"  height="150px">';
-                                            if ($i % 2 == 1) {
+                                            if ($j % 2 == 1) {
                                                 echo '<br>';
                                             }
-                                            $i++;
+                                            $j++;
                                         }
                                         ?>
                                         <div class="text-center">
                                             <a href="admin.php?c=product&a=geteditimage&id=<?php echo $item->id ?>" class="btn btn-primary">Chỉnh sửa ảnh</a>
                                         </div>
-                                          
-                                        <!-- Button trigger modal -->
-                                        <!-- <button class="btn btn-default" data-toggle="modal" data-target="#view-image-<?php echo $item->id ?>">
-                                        Xem ảnh
-                                        </button> -->
-
-                                        <!-- Modal -->
-                                        <!-- <div class="modal fade" id="view-image-<?php echo $item->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                        <h4 class="modal-title" id="myModalLabel">Hình ảnh của sản phẩm có tên <b><?php echo $item->name ?></b></h4>
-                                                    </div>
-                                                    <div class="modal-body text-center">
-                                                        <?php
-                                                        $image = explode(",", $item->image);
-                                                        $i = 0;
-                                                        foreach($image as $img) {
-                                                            list($id, $name) = explode("@", $img);
-                                                            echo '<img src="upload/product/'.$name.'" width="250px">';
-                                                            if ($i == 1) {
-                                                                echo '<br>';
-                                                            }
-                                                            $i++;
-                                                        }
-                                                        ?>                                                       
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
                                     </td>
                                     <td>
                                         <?php
                                         $comparetive = explode(",", $item->comparetive);
                                         echo '<ul>';
                                         foreach($comparetive as $cmp) {
-                                            list($id, $name, $price, $link, $providerName, $providerImage) = explode("@", $cmp);
+                                            list($link, $providerName) = explode("||", $cmp);
                                             echo '<li>'.$providerName.': <a href="'.$link.'">'.$link.'</a></li>';
                                         }
                                         echo '</ul>'

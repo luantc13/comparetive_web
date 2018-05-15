@@ -4,7 +4,7 @@ class CategoryController extends BaseController
 {
     public function indexAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('category');
 
         $list = $this->model->category->all();
@@ -26,7 +26,7 @@ class CategoryController extends BaseController
      
     public function changeActiveAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('category');
 
         // get value of column active
@@ -62,7 +62,7 @@ class CategoryController extends BaseController
 
     public function postAddAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('category');
         $this->helper->load('string');
 
@@ -137,7 +137,7 @@ class CategoryController extends BaseController
 
     public function getEditAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('category');
 
         $id = $_GET['id'];
@@ -159,7 +159,7 @@ class CategoryController extends BaseController
 
     public function postEditAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('category');
         $this->helper->load('string');
 
@@ -246,7 +246,7 @@ class CategoryController extends BaseController
 
     public function deleteAction()
     {
-        // load model and library
+        // load model, library and helper
         $this->model->load('category');
         $this->model->load('productRange');
         $this->model->load('product');
