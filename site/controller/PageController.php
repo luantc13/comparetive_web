@@ -596,7 +596,7 @@ class PageController extends BaseController
                 // name
                 $pattern = $item->name_pattern;
                 preg_match_all($pattern, $curl->response, $name);
-                if ($name[1][0] != $item->name) {
+                if ($name[1][0] != '' && $name[1][0] != $item->name) {
                     $item->name = $name[1][0];
                     $update = $this->model->page->updateComparetiveLink($item->name, $item->price, $item->id);
                 }
@@ -604,12 +604,14 @@ class PageController extends BaseController
                 // price
                 $pattern = $item->price_pattern;
                 preg_match_all($pattern, $curl->response, $price);
-                $price[1][0] = str_replace('.', '', $price[1][0]);
-                $price[1][0] = str_replace(',', '', $price[1][0]);
-                if ($price[1][0] != $item->price) {
-                    $item->price = $price[1][0];
-                    $update = $this->model->page->updateComparetiveLink($item->name, $item->price, $item->id);
-                }
+                if (!empty($price[1])) {
+                    $price[1][0] = str_replace('.', '', $price[1][0]);
+                    $price[1][0] = str_replace(',', '', $price[1][0]);
+                    if ($price[1][0] != '' && $price[1][0] != $item->price) {
+                        $item->price = $price[1][0];
+                        $update = $this->model->page->updateComparetiveLink($item->name, $item->price, $item->id);
+                    }
+                }  
             }
         }
         
