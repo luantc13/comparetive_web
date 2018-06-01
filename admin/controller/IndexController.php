@@ -29,9 +29,11 @@ class IndexController extends BaseController
         // $curl->get('https://laptopnew.vn/dell-inspiron-7567-70138766');
         // $curl->get('http://laptopno1.com/Dell-Inspiron-7567-Intel-c2-ae-CoreTM-i7-_7700HQ-_8GB-_1TB-_128GB-SSD-_GeForce-c2-ae-GTX1050Ti-4GB-_Win-1O-_Full-HD/29023');
         // $curl->get('http://www.hangchinhhieu.vn/san-pham/dell-inspiron-7577-n7577c-12708-5690');
-        // $curl->get('https://phongvu.vn/may-tinh-xach-tay/laptop-dell/dell-inspiron/may-xach-tay-laptop-dell-inspiron-15-7577-n7577a-den.html');
-        $curl->get('https://www.thegioididong.com/laptop/dell-vostro-3568-p63f002');
+        // $curl->get('https://phongvu.vn/laptop/laptop-dell/dell-inspiron/may-tinh-xach-tay-laptop-dell-inspiron-15-7577-n7577a-den.html');
+        // $curl->get('https://www.thegioididong.com/laptop/dell-vostro-3568-p63f002');
         // $curl->get('https://fptshop.com.vn/may-tinh-xach-tay/dell-inspiron-n3567c');
+        // $curl->get('https://www.nguyenkim.com/laptop-asus-rog-zephyrus-m-gm501gs-ei004t.html');
+        $curl->get('http://www.ankhang.vn/laptop-asus-zenbook-ux430un-gv091t_id12648.html');
 
         if ($curl->error) {
             echo 'Error: ' . $curl->errorCode . ': ' . $curl->errorMessage . "\n";
@@ -96,37 +98,64 @@ class IndexController extends BaseController
             // print_r($data);
             // echo '</pre>';
             
-            // name thegioididong
-            $pattern = '#<h1>(.*?)</h1>#';
-            preg_match_all($pattern, $curl->response, $data);
-            echo '<pre>';
-            print_r($data);
-            echo '</pre>';
-
-            // price thegioididong
-            $pattern = '#<div class="area_price">
-                <strong>(.*?)₫</strong>#';
-
-            preg_match_all($pattern, $curl->response, $data);
-            echo '<pre>';
-            print_r($data);
-            echo '</pre>';
-                
-            // name fptshop
-            // $pattern = '#<h1 class="fs-dttname">(.*?) <span class="nosku">.*?</span></h1>#';
+            // // name thegioididong
+            // $pattern = '#<h1>(.*?)</h1>#';
             // preg_match_all($pattern, $curl->response, $data);
             // echo '<pre>';
             // print_r($data);
             // echo '</pre>';
 
-            // // price fptshop
-            // $pattern = '#<span class="fs-gsocit">
-            //                             <b>Mua online giá sốc</b> <strong>(.*?)₫</strong> <i></i>
-            //                         </span>#';
+            // // price thegioididong
+            // $pattern = '#<div class="area_price">
+            //     <strong>(.*?)₫</strong>#';
+
+            // preg_match_all($pattern, $curl->response, $data);
+            // echo '<pre>';
+            // print_r($data);
+            // echo '</pre>';
+                
+//             // name fptshop
+//             $pattern = '#<h1 class="fs-dttname">(.*?) <span class="nosku">.*?</span></h1>#';
+//             preg_match_all($pattern, $curl->response, $data);
+//             echo '<pre>';
+//             print_r($data);
+//             echo '</pre>';
+
+//             // price fptshop
+//             $pattern = '#<p class="fs-dtprice ">
+// (.*?) <strong>₫</strong>#';
+//             preg_match_all($pattern, $curl->response, $data);
+//             echo '<pre>';
+//             print_r($data);
+//             echo '</pre>'; 
+
+            // // name nguyenkim
+            // $pattern = '#<h1 class="product_info_name">(.*?)</h1>#';
+            // preg_match_all($pattern, $curl->response, $data);
+            // echo '<pre>';
+            // print_r($data);
+            // echo '</pre>';
+
+            // // price nguyenkim
+            // $pattern = '#<div class="product_info_price_value-final">(.*?)đ</div>#';
             // preg_match_all($pattern, $curl->response, $data);
             // echo '<pre>';
             // print_r($data);
             // echo '</pre>'; 
+
+            // name ankhang
+            $pattern = '#<h1 class="text-700" style="font-weight:700">(.*?)</h1>#';
+            preg_match_all($pattern, $curl->response, $data);
+            echo '<pre>';
+            print_r($data);
+            echo '</pre>';
+
+            // price fptshop
+            $pattern = '#<span class="pro-price">(.*?) VNĐ</span>#';
+            preg_match_all($pattern, $curl->response, $data);
+            echo '<pre>';
+            print_r($data);
+            echo '</pre>'; 
 
         }
         // echo $curl->response;
