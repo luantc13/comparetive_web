@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 01, 2018 lúc 05:02 PM
+-- Thời gian đã tạo: Th3 18, 2019 lúc 11:25 AM
 -- Phiên bản máy phục vụ: 10.1.26-MariaDB
 -- Phiên bản PHP: 7.1.9
 
@@ -325,7 +325,12 @@ INSERT INTO `comparetive_link` (`id`, `id_product`, `id_provider`, `name`, `pric
 (279, 71, 2, 'Asus Gaming TUF FX504GE E4059T Intel&#174; Core™ i7 _8750HQ _8GB _1TB Hybrid _NVIDIA&#174; GeForce&#174; GTX1050Ti with 4GB GDDR5 _Win 10 _Full HD IPS _LED KEY _418D', 25990000, 'http://laptopno1.com/Asus-Gaming-TUF-FX504GE-E4059T-Intel-c2-ae-CoreTM-i7-_8750HQ-_8GB-_1TB-Hybrid-_NVIDIA-c2-ae-GeForce-c2-ae-GTX1050Ti-with-4GB-GDDR5-_Win-10-_Full-HD-IP/30142', '2018-05-20 15:11:26', '2018-05-27 06:12:52'),
 (280, 71, 3, 'Sản phẩm ASUS TUF Gaming FX504GD-E4081T', 24990000, 'http://www.hangchinhhieu.vn/san-pham/asus-tuf-gaming-fx504gd-e4081t-13115-3766', '2018-05-20 15:11:26', '2018-05-20 15:11:26'),
 (281, 71, 6, 'Asus TUF FX504GE-E4059T', 25990000, 'https://fptshop.com.vn/may-tinh-xach-tay/Asus-TUF-FX504GE-E4059T', '2018-05-20 15:11:26', '2018-05-20 15:11:26'),
-(282, 71, 7, 'Laptop Asus TUF Gaming FX504GD-E4081T', 24990000, 'http://www.ankhang.vn/laptop-asus-tuf-gaming-fx504gd-e4081t_id12734.html', '2018-05-20 15:11:27', '2018-05-20 15:11:27');
+(282, 71, 7, 'Laptop Asus TUF Gaming FX504GD-E4081T', 24990000, 'http://www.ankhang.vn/laptop-asus-tuf-gaming-fx504gd-e4081t_id12734.html', '2018-05-20 15:11:27', '2018-05-20 15:11:27'),
+(290, 84, 3, 's', 21490000, 'https://hangchinhhieu.vn/products/laptop-asus-zenbook-ux333fa-a4017t-i5-8265u', '2019-03-18 10:18:05', '2019-03-18 10:18:05'),
+(291, 85, 3, 's', 21490000, 'https://hangchinhhieu.vn/products/laptop-asus-zenbook-ux333fa-a4017t-i5-8265u', '2019-03-18 10:19:17', '2019-03-18 10:19:17'),
+(292, 86, 3, 's', 21490000, 'https://hangchinhhieu.vn/products/laptop-asus-zenbook-ux333fa-a4017t-i5-8265u', '2019-03-18 10:20:15', '2019-03-18 10:20:15'),
+(293, 87, 6, 's', 22990000, 'https://fptshop.com.vn/may-tinh-xach-tay/asus-zenbook-ux333fa-a4181t-core-i5-8265u', '2019-03-18 10:23:23', '2019-03-18 10:23:23'),
+(294, 88, 6, 'Asus Zenbook UX333FA-A4181T/Core i5-8265U/8GB/256GSSD/WIN10', 22990000, 'https://fptshop.com.vn/may-tinh-xach-tay/asus-zenbook-ux333fa-a4181t-core-i5-8265u', '2019-03-18 10:24:12', '2019-03-18 10:24:12');
 
 -- --------------------------------------------------------
 
@@ -561,7 +566,47 @@ INSERT INTO `image_product` (`id`, `name`, `id_product`, `created_at`, `updated_
 (240, '2AU0_Asus_TUF_Gaming_FX504.png', '71', '2018-05-20 15:11:27', '2018-05-20 15:11:27'),
 (241, 'KPlN_Asus_TUF_Gaming_FX504-1.png', '71', '2018-05-20 15:11:27', '2018-05-20 15:11:27'),
 (242, '8OvR_Asus_TUF_Gaming_FX504-3.png', '71', '2018-05-20 15:11:27', '2018-05-20 15:11:27'),
-(243, 'pr5N_Asus_TUF_Gaming_FX504-4.png', '71', '2018-05-20 15:11:27', '2018-05-20 15:11:27');
+(243, 'pr5N_Asus_TUF_Gaming_FX504-4.png', '71', '2018-05-20 15:11:27', '2018-05-20 15:11:27'),
+(272, 'NnYi_Asus_Zenbook_13_UX333-Blue1.jpg', '79', '2019-03-18 10:00:19', '2019-03-18 10:00:19'),
+(273, '5XY7_Asus_Zenbook_13_UX333-Blue-11.jpg', '79', '2019-03-18 10:00:19', '2019-03-18 10:00:19'),
+(274, 'jY9E_Asus_Zenbook_13_UX333-Blue-21.jpg', '79', '2019-03-18 10:00:19', '2019-03-18 10:00:19'),
+(275, 'smcV_Asus_Zenbook_13_UX333-Blue-51.jpg', '79', '2019-03-18 10:00:19', '2019-03-18 10:00:19'),
+(276, 'uEMd_Asus_Zenbook_13_UX333-Blue1.jpg', '80', '2019-03-18 10:10:44', '2019-03-18 10:10:44'),
+(277, 'LDrd_Asus_Zenbook_13_UX333-Blue-11.jpg', '80', '2019-03-18 10:10:44', '2019-03-18 10:10:44'),
+(278, 'm8D9_Asus_Zenbook_13_UX333-Blue-21.jpg', '80', '2019-03-18 10:10:44', '2019-03-18 10:10:44'),
+(279, 'k26E_Asus_Zenbook_13_UX333-Blue-51.jpg', '80', '2019-03-18 10:10:44', '2019-03-18 10:10:44'),
+(280, 'joZF_Asus_Zenbook_13_UX333-Blue1.jpg', '81', '2019-03-18 10:13:38', '2019-03-18 10:13:38'),
+(281, '41dO_Asus_Zenbook_13_UX333-Blue-11.jpg', '81', '2019-03-18 10:13:38', '2019-03-18 10:13:38'),
+(282, 'toLS_Asus_Zenbook_13_UX333-Blue-21.jpg', '81', '2019-03-18 10:13:38', '2019-03-18 10:13:38'),
+(283, 'K4Kp_Asus_Zenbook_13_UX333-Blue-51.jpg', '81', '2019-03-18 10:13:38', '2019-03-18 10:13:38'),
+(284, 'ULoK_Asus_Zenbook_13_UX333-Blue1.jpg', '82', '2019-03-18 10:15:04', '2019-03-18 10:15:04'),
+(285, 'u5n_Asus_Zenbook_13_UX333-Blue-11.jpg', '82', '2019-03-18 10:15:04', '2019-03-18 10:15:04'),
+(286, 'UKDn_Asus_Zenbook_13_UX333-Blue-21.jpg', '82', '2019-03-18 10:15:04', '2019-03-18 10:15:04'),
+(287, 'TNsY_Asus_Zenbook_13_UX333-Blue-51.jpg', '82', '2019-03-18 10:15:05', '2019-03-18 10:15:05'),
+(288, 'NfAN_Asus_Zenbook_13_UX333-Blue1.jpg', '83', '2019-03-18 10:16:14', '2019-03-18 10:16:14'),
+(289, 'fsF3_Asus_Zenbook_13_UX333-Blue-11.jpg', '83', '2019-03-18 10:16:14', '2019-03-18 10:16:14'),
+(290, 'P49V_Asus_Zenbook_13_UX333-Blue-21.jpg', '83', '2019-03-18 10:16:14', '2019-03-18 10:16:14'),
+(291, '2iT8_Asus_Zenbook_13_UX333-Blue-51.jpg', '83', '2019-03-18 10:16:14', '2019-03-18 10:16:14'),
+(292, 'TrVX_Asus_Zenbook_13_UX333-Blue1.jpg', '84', '2019-03-18 10:18:05', '2019-03-18 10:18:05'),
+(293, 'Fx2i_Asus_Zenbook_13_UX333-Blue-11.jpg', '84', '2019-03-18 10:18:05', '2019-03-18 10:18:05'),
+(294, 'Wfq_Asus_Zenbook_13_UX333-Blue-21.jpg', '84', '2019-03-18 10:18:05', '2019-03-18 10:18:05'),
+(295, '5brI_Asus_Zenbook_13_UX333-Blue-51.jpg', '84', '2019-03-18 10:18:05', '2019-03-18 10:18:05'),
+(296, 'qgjF_Asus_Zenbook_13_UX333-Blue1.jpg', '85', '2019-03-18 10:19:17', '2019-03-18 10:19:17'),
+(297, 'GjNT_Asus_Zenbook_13_UX333-Blue-11.jpg', '85', '2019-03-18 10:19:17', '2019-03-18 10:19:17'),
+(298, 'VLCw_Asus_Zenbook_13_UX333-Blue-21.jpg', '85', '2019-03-18 10:19:17', '2019-03-18 10:19:17'),
+(299, 'ZVVq_Asus_Zenbook_13_UX333-Blue-51.jpg', '85', '2019-03-18 10:19:17', '2019-03-18 10:19:17'),
+(300, 'p1E0_Asus_Zenbook_13_UX333-Blue1.jpg', '86', '2019-03-18 10:20:15', '2019-03-18 10:20:15'),
+(301, 'Li0p_Asus_Zenbook_13_UX333-Blue-11.jpg', '86', '2019-03-18 10:20:15', '2019-03-18 10:20:15'),
+(302, 'uFsl_Asus_Zenbook_13_UX333-Blue-21.jpg', '86', '2019-03-18 10:20:15', '2019-03-18 10:20:15'),
+(303, 'whTS_Asus_Zenbook_13_UX333-Blue-51.jpg', '86', '2019-03-18 10:20:15', '2019-03-18 10:20:15'),
+(304, 'FqzZ_Asus_Zenbook_13_UX333-Blue1.jpg', '87', '2019-03-18 10:23:23', '2019-03-18 10:23:23'),
+(305, 'SEsR_Asus_Zenbook_13_UX333-Blue-11.jpg', '87', '2019-03-18 10:23:23', '2019-03-18 10:23:23'),
+(306, '54qU_Asus_Zenbook_13_UX333-Blue-21.jpg', '87', '2019-03-18 10:23:23', '2019-03-18 10:23:23'),
+(307, 'GhJk_Asus_Zenbook_13_UX333-Blue-51.jpg', '87', '2019-03-18 10:23:23', '2019-03-18 10:23:23'),
+(308, 'BojY_Asus_Zenbook_13_UX333-Blue1.jpg', '88', '2019-03-18 10:24:12', '2019-03-18 10:24:12'),
+(309, 'x69D_Asus_Zenbook_13_UX333-Blue-11.jpg', '88', '2019-03-18 10:24:12', '2019-03-18 10:24:12'),
+(310, 'ihcn_Asus_Zenbook_13_UX333-Blue-21.jpg', '88', '2019-03-18 10:24:12', '2019-03-18 10:24:12'),
+(311, 'ZfXa_Asus_Zenbook_13_UX333-Blue-51.jpg', '88', '2019-03-18 10:24:12', '2019-03-18 10:24:12');
 
 -- --------------------------------------------------------
 
@@ -638,7 +683,8 @@ INSERT INTO `product` (`id`, `name`, `slug`, `id_range`, `rating`, `active`, `cr
 (65, 'Lenovo Thinkpad E560', 'lenovo-thinkpad-e560', 23, '4.60', 1, '2018-05-04 08:24:18', '2018-05-06 05:40:00'),
 (66, 'Macbook Pro 2017', 'macbook-pro-2017', 24, '4.15', 1, '2018-05-04 08:29:47', '2018-05-06 05:40:00'),
 (67, 'Macbook Air 2017', 'macbook-air-2017', 25, '3.94', 1, '2018-05-04 08:36:19', '2018-05-06 05:40:00'),
-(71, 'Asus TUF FX504', 'asus-tuf-fx504', 10, '0.00', 1, '2018-05-20 15:11:24', '2018-05-20 15:11:24');
+(71, 'Asus TUF FX504', 'asus-tuf-fx504', 10, '0.00', 1, '2018-05-20 15:11:24', '2018-05-20 15:11:24'),
+(88, 'Asus Zenbook 13 UX333FA', 'asus-zenbook-13-ux333fa', 11, '0.00', 1, '2019-03-18 10:24:12', '2019-03-18 10:24:12');
 
 -- --------------------------------------------------------
 
@@ -711,9 +757,9 @@ CREATE TABLE `provider` (
 --
 
 INSERT INTO `provider` (`id`, `name`, `slug`, `link`, `image`, `name_pattern`, `price_pattern`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'Laptopnew', 'laptopnew', 'https://laptopnew.vn/', 'OhSi_laptopnew.png', '#<h1 class=\"title\">(.*?)</h1>#', '#<span id=\"product_price\">(.*?)<i class=\"sy\">đ</i> </span>#', 1, '2018-04-16 10:17:46', '2018-04-23 02:40:26'),
+(1, 'Laptopnew', 'laptopnew', 'https://laptopnew.vn/', 'OhSi_laptopnew.png', '#<h1 class=\"title\" itemprop=\"name\">(.*?)</h1>#', '#<span id=\"product_price\" itemprop=\"price\">(.*?)<i class=\"sy\">đ</i> </span>#', 1, '2018-04-16 10:17:46', '2019-03-18 09:16:06'),
 (2, 'Laptopno1', 'laptopno1', 'http://laptopno1.com/', 'BvWW_laptopno1.png', '#<h1 itemprop=\"name\" class=\"product-name\">\r\n    <a href=\".*?\" onclick=\"return false;\" title=\".*?\" itemprop=\"url\">\r\n        (.*?)\r\n    </a>\r\n</h1>#', '#<div class=\"price\" itemprop=\"price\">(.*?)</div>#', 1, '2018-04-16 10:20:25', '2018-04-23 02:40:37'),
-(3, 'Hangchinhhieu', 'hangchinhhieu', 'http://www.hangchinhhieu.vn/', 'wbha_hangchinhhieuvn.jpg', '#<div class=\\\'title\\\'><h1> (.*?)</h1></div>#', '#<span class=\\\'gia\\\'>(.*?) VNĐ <span style=\\\'font-size:12px; color:\\#000\\\'>#', 1, '2018-04-16 10:21:42', '2018-04-23 02:41:55'),
+(3, 'Hangchinhhieu', 'hangchinhhieu', 'https://hangchinhhieu.vn/', 'wbha_hangchinhhieuvn.jpg', '#<h1 class=\"title pdTitle\">(.*?)</h1>#', '#<span id=\"pdPriceNumber\">(.*?)₫</span>#', 1, '2018-04-16 10:21:42', '2019-03-18 10:01:27'),
 (4, 'Phong Vũ', 'phong-vu', 'https://phongvu.vn/', '13Eu_phongvu.png', '#<h1 class=\"detail-product-name\">(.*?)</h1>#', '#<div class=\"detail-product-final-price\">(.*?) ₫</div>#', 1, '2018-04-16 10:23:12', '2018-04-23 02:42:15'),
 (5, 'Thế giới di động', 'the-gioi-di-dong', 'https://www.thegioididong.com/', 'V9el_thegioididong.png', '#<h1>(.*?)</h1>#', '#<div class=\"area_price\">\r\n                <strong>(.*?)₫</strong>#', 1, '2018-04-16 10:25:11', '2018-04-23 06:15:06'),
 (6, 'Fpt Shop', 'fpt-shop', 'https://fptshop.com.vn/', 'Sgu8_fptshop.png', '#<h1 class=\"fs-dttname\">(.*?) <span class=\"nosku\">.*?</span></h1>#', '#<p class=\"fs-dtprice \">\r\n(.*?) <strong>₫</strong>#', 1, '2018-04-16 10:26:02', '2018-04-27 04:27:33'),
@@ -870,19 +916,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `comparetive_link`
 --
 ALTER TABLE `comparetive_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=283;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=295;
 
 --
 -- AUTO_INCREMENT cho bảng `image_product`
 --
 ALTER TABLE `image_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=312;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT cho bảng `product_range`

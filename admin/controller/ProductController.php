@@ -131,8 +131,9 @@ class ProductController extends BaseController
 
                 // check link belongs to provider
                 $pv = $this->model->provider->find($provider[$i]);
+
                 if (strlen(strstr($link[$i], $pv->link)) <= 0) {
-                    $error[] = 'Đường dẫn '.$link[$i].' không thuộc nhà cung cấp '.$provider[$i];
+                    $error[] = 'Đường dẫn '.$link[$i].' không thuộc nhà cung cấp '.$pv->name;
                 }
             }
 
@@ -162,10 +163,11 @@ class ProductController extends BaseController
                                 $curl->get($link[$i]);
 
                                 if ($curl->error) {
-                                        echo 'Error: ' . $curl->errorCode . ': ' . $curl->errorMessage . "\n";
+                                    echo 'Error: ' . $curl->errorCode . ': ' . $curl->errorMessage . "\n";
                                 } else {
                                     // name
                                     $pattern = $pv->name_pattern;
+
                                     preg_match_all($pattern, $curl->response, $name);
 
                                     // price
@@ -175,8 +177,9 @@ class ProductController extends BaseController
                                     $price[1][0] = str_replace(',', '', $price[1][0]);
                                 }
 
-                                $insertComparetiveLink = $this->model->comparetiveLink->insert($product->id, $provider[$i], $name[1][0], $price[1][0], $link[$i]);                                }
-                            
+                                $insertComparetiveLink = $this->model->comparetiveLink->insert($product->id, $provider[$i], $name[1][0], $price[1][0], $link[$i]);
+                            }
+
                             // process image
                             $part = PATH."/upload/product/";
 
