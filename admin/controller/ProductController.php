@@ -89,139 +89,195 @@ class ProductController extends BaseController
         $this->model->load('comparetiveLink');
         $this->model->load('provider');
         $this->helper->load('string');
-       
-        $name = $_POST['txtName'];
-        $slug = '';
+
         $idRange = $_POST['cbbProductRange'];
-        $active = $_POST['rdoActive'];      
+        $name = $_POST['txtName'];
+        $providers = $_POST['cbbProvider'];
+        $links = $_POST['txtLink'];
+        $fileUpload = $_FILES['fleImage'];
 
-        $error = [];
+        $imageName = $_FILES['fleImage']['name'];
+        $imageTmpName = $_FILES['fleImage']['tmp_name'];
+        $imageType = $_FILES['fleImage']['type'];
+        $imageError = $_FILES['fleImage']['error'];
 
-        // check product range
+        if (!$this->isValidAddData($idRange, $name, $providers, $links, $fileUpload, $imageError)) {
+            header('location: admin.php?c=product&a=getadd');
+
+            return;
+        }
+
+        $slug = changeTitle($name);
+        $isActive = $_POST['rdoActive'];   
+
+        $isInsertProductSuccess = $this->insertProduct($name, $slug, $idRange, $isActive);
+
+        if (!isset($isInsertProductSuccess)) {
+            header('location: admin.php?c=product&a=getadd');
+
+            return;
+        }
+
+        $product = $this->model->product->findColumn('name', $name);
+
+        $this->insertComparetiveLinks($providers, $links, $product);
+        
+
+        $this->insertImages($imageName, $imageTmpName, $product);
+
+
+        $_SESSION['success'] = [];
+        $_SESSION['success'][] = 'Thêm mới thành công';  
+
+        header('location: admin.php?c=product');   
+    }
+
+    public function isValidAddData($idRange, $name, $providers, $links, $fileUpload, $imageError) {
         if (!required($idRange)) {
-            $error[] = 'Dòng sản phẩm phải được chọn';
+            $_SESSION['error'] = [];
+            $_SESSION['error'][] = 'Dòng sản phẩm phải được chọn';
+
+            return false;
         }
 
-        // check name
         if (!required($name)) {
-            $error[] = 'Tên sản phẩm không được để trống';
+            $_SESSION['error'] = [];
+            $_SESSION['error'][] = 'Tên sản phẩm không được để trống';
+
+            return false;
         }
 
-        // check and process unique
-        $unique = $this->model->product->findColumn('name', $name);
+        if ($this->isExistedProduct($name)) {
+            $_SESSION['error'] = [];
+            $_SESSION['error'][] = 'Tên sản phẩm đã tồn tại';
 
-        if ($unique) {
-            $error[] = 'Tên sản phẩm đã tồn tại';
-        } else {
-            $slug = changeTitle($name);
+            return false;
+        }
 
-            $provider = $_POST['cbbProvider'];
-            $link = $_POST['txtLink'];
+        if (!$this->isValidComparetiveLinks($providers, $links)) {
+            $_SESSION['error'] = [];
+            $_SESSION['error'][] = 'Nhà cung cấp và đường dẫn không hợp lệ';
 
-            for ($i = 0; $i < count($provider); $i++) {
-                // check product range
-                if (!required($provider[$i])) {
-                    $error[] = 'Nhà cung cấp phải được chọn';
-                }
-                
-                // check product range
-                if (!required($link[$i])) {
-                    $error[] = 'Đường dẫn không được để trống';
-                }
+            return false;
+        }
 
-                // check link belongs to provider
-                $pv = $this->model->provider->find($provider[$i]);
+        foreach ($providers as $key => $value) {
+            $provider = $this->model->provider->find($value);
 
-                if (strlen(strstr($link[$i], $pv->link)) <= 0) {
-                    $error[] = 'Đường dẫn '.$link[$i].' không thuộc nhà cung cấp '.$pv->name;
-                }
+            if (strlen(strstr($links[$key], $provider->link)) <= 0) {
+                $_SESSION['error'] = [];
+                $_SESSION['error'][] = 'Đường dẫn '.$links[$key].' không thuộc nhà cung cấp '.$provider->name;
+
+                return false;
+            }
+        }
+
+        if (empty($fileUpload)) {
+            $_SESSION['error'] = [];
+            $_SESSION['error'][] = 'Hình ảnh cho sản phẩm là bắt buộc';
+
+            return false;
+        }
+
+        if (empty($imageError)) {
+            $_SESSION['error'] = [];
+            $_SESSION['error'][] = 'Gặp lỗi khi upload ảnh';
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public function isExistedProduct($name) {
+        return $this->model->product->findColumn('name', $name);
+    }
+
+    public function isValidComparetiveLinks($providers, $links) {
+        return required($providers) && required($links) && count($providers) == count($links);
+    }
+
+    public function insertProduct($name, $slug, $idRange, $isActive) {
+        $isInsertProductSuccess = $this->model->product->insert($name, $slug, $idRange, $isActive);
+
+        if (!isset($isInsertProductSuccess)) {
+            $_SESSION['error'] = [];
+            $_SESSION['error'][] = 'Thêm mới thật bại';
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public function insertComparetiveLinks($providers, $links, $product) {
+        require PATH.'/vendor/autoload.php';
+
+        $curl = new Curl();
+        $curl->setOpt(CURLOPT_ENCODING, '');
+
+        foreach ($providers as $key => $value) {
+            $provider = $this->model->provider->find($value);
+
+            $curl->get($links[$key]);
+
+            if (!$curl->error) {
+                $name = $this->getComparetiveName($provider->name_pattern, $curl->response);
+                $price = $this->getComparetivePrice($provider->price_pattern, $curl->response);
+
+                $insertComparetiveLink = $this->model->comparetiveLink->insert($product->id, $value, $name, $price, $links[$key]);
             }
 
-            if (empty($error)) {
-                // check and process image
-                if (!empty($_FILES['fleImage'])) {
-                    $imageName = $_FILES['fleImage']['name'];
-                    $imageTmpName = $_FILES['fleImage']['tmp_name'];
-                    $imageType = $_FILES['fleImage']['type'];
-                    $imageError = $_FILES['fleImage']['error'];
-                    
-                    if (!empty($imageError)) {
-                        // insert product
-                        $insertProduct = $this->model->product->insert($name, $slug, $idRange, $active);
-                        if (isset($insertProduct)) {
-                            $product = $this->model->product->findColumn('name', $name);
-                            
-                            require PATH.'/vendor/autoload.php';
+        }
+    }
 
-                            $curl = new Curl();
-                            $curl->setOpt(CURLOPT_ENCODING, '');
+    public function getComparetiveName($pattern, $response) {
+        $name = '';
+        preg_match_all($pattern, $response, $name);
 
-                            // insert comparetive link
-                            for ($i = 0; $i < count($provider); $i++) {
-                                $pv = $this->model->provider->find($provider[$i]);
+        return $name[1][0];
+    }
 
-                                $curl->get($link[$i]);
+    public function getComparetivePrice($pattern, $response) {
+        $price = null;
+        preg_match_all($pattern, $response, $price);
+        $price[1][0] = str_replace('.', '', $price[1][0]);
+        $price[1][0] = str_replace(',', '', $price[1][0]);
 
-                                if ($curl->error) {
-                                    echo 'Error: ' . $curl->errorCode . ': ' . $curl->errorMessage . "\n";
-                                } else {
-                                    // name
-                                    $pattern = $pv->name_pattern;
+        return $price[1][0];
+    }
 
-                                    preg_match_all($pattern, $curl->response, $name);
+    public function insertImages($imageName, $imageTmpName, $product) {
+        $path = PATH."/upload/product/";
 
-                                    // price
-                                    $pattern = $pv->price_pattern;
-                                    preg_match_all($pattern, $curl->response, $price);
-                                    $price[1][0] = str_replace('.', '', $price[1][0]);
-                                    $price[1][0] = str_replace(',', '', $price[1][0]);
-                                }
+        foreach ($imageName as $key => $value) {
+            $name = $this->getImageName($value, $path);
 
-                                $insertComparetiveLink = $this->model->comparetiveLink->insert($product->id, $provider[$i], $name[1][0], $price[1][0], $link[$i]);
-                            }
+            $extension = pathinfo($name, PATHINFO_EXTENSION);
 
-                            // process image
-                            $part = PATH."/upload/product/";
+            if ($this->isValidFile($extension)) {
+                $insert = $this->model->imageProduct->insert($name, $product->id);
 
-                            for ($i = 0; $i < count($imageName); $i++) {
-                                $imageName[$i] = random().'_'.$imageName[$i];
-                                while (file_exists($part.$imageName[$i])) {
-                                    $imageName[$i] = random().'_'.$imageName[$i];
-                                }
-
-                                // check extension of file
-                                $ext = pathinfo($imageName[$i], PATHINFO_EXTENSION);
-
-                                if ($ext != 'jpg' && $ext != 'jpeg' && $ext != 'png') {
-                                    $error[] = 'File được chọn phải là hình ảnh';
-                                } else {
-                                    // insert image
-                                    $insert = $this->model->imageProduct->insert($imageName[$i], $product->id);
-                                    if (isset($insert)) {
-                                        move_uploaded_file($imageTmpName[$i], $part.$imageName[$i]);
-                                    }
-                                }
-                            }
-
-                            $_SESSION['success'] = [];
-                            $_SESSION['success'][] = 'Thêm mới thành công';
-                        } else {
-                            $error[] = 'Thêm mới thất bại';
-                        }
-                    }                           
-                } else {
-                    $error[] = 'Hình ảnh cho sản phẩm là bắt buộc';
+                if (isset($insert)) {
+                    move_uploaded_file($imageTmpName[$key], $path.$name);
                 }
-            }            
-        }         
+            }
+        }
+    }
 
-        $_SESSION['error'] = $error;
+    public function getImageName($name, $path) {
+        $name = random().'_'.$name;
+        while (file_exists($path.$name)) {
+            $name = random().'_'.$name;
+        }
 
-        if (isset($_SESSION['success'])) {
-            header('location: admin.php?c=product');
-        } else {
-            header('location: admin.php?c=product&a=getadd');
-        }     
+        return $name;
+    }
+
+    public function isValidFile($extension) {
+        $allowExtension = ['jpg', 'jpeg', 'png'];
+
+        return in_array($extension, $allowExtension);
     }
 
     public function getEditImageAction()
